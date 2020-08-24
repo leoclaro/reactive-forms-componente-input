@@ -1,0 +1,40 @@
+<form [formGroup]="form" (submit)="submit()" novalidate>
+
+	<div formArrayName="constraints" *ngFor="let constraint of form['controls'].constraints['controls']; index as i">
+
+		<div [formGroupName]="i">
+
+
+			<div class="form-group">
+				<input type="text" formControlName="before" placeholder="before" />
+				<input type="text" formControlName="after" placeholder="after" />
+
+				<!-- How to forward [formControlName] to 
+         input[ngbDatepicker] inside <app-date> wrapper component
+         to tie it up with form? 
+         
+         https://stackoverflow.com/questions/52893088/forwarding-formcontrolname-to-inner-component-in-angular
+
+         FormArray: not working!!!
+
+         Original StackBlitz: https://stackblitz.com/edit/ng-tie-reactive-forms-throgh-wrapper-andd8w?file=src/app/date-wrapper/date-wrapper.component.ts
+         
+          -->
+
+        
+
+				<app-date class="form-control" controlName="delay"></app-date>
+
+			</div>
+
+			<hr>
+	</div>
+
+	</div>
+
+	<button type="submit">Submit form</button>
+
+</form>
+
+
+<pre>{{form.value | json}}</pre>
